@@ -58,7 +58,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
@@ -85,3 +85,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, Deceleration * delta)
 	if !is_locked:
 		move_and_slide()
+		
+func jump():
+	velocity.y = JUMP_VELOCITY
